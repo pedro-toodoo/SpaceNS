@@ -1,7 +1,6 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Crew = mongoose.model('Crew');
+const Crew = require('../models/crew');
 
 exports.create = async (data) => {
     var crew = new Crew(data);

@@ -1,10 +1,9 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Star = mongoose.model('Star');
+const Star = require('../models/star');
 
 exports.get = async() => {
-    const res = await Star.find({}, 'name mass size galaxy_name');
+    const res = await Star.findAll();
     return res;
 }
 

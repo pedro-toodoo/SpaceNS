@@ -1,29 +1,37 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Sequelize = require('sequelize');
+const database = require('../configsqlite');
+const Travel = require('./travel');
 
-const schema = new Schema({
+const Planet = database.define('planet', {
     name: {
-        type: String,
-        required: true,
-        trim: true //remove espaços antes e depois da string 
+        type: Sequelize.STRING,
+        allowNull: false, 
+        primaryKey: true
     },
     mass: {
-        type: Number,
-        required: true,
-        trim: true //remove espaços antes e depois da string 
-
+        type: Sequelize.DECIMAL,
+        allowNull: false, 
     },
     size: {
-        type: Number,
-        required: true,
-        trim: true //remove espaços antes e depois da string 
+        type: Sequelize.DECIMAL,
+        allowNull: false, 
     },
     star: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Star'
+        type: Sequelize.STRING,
+        allowNull: false, 
+    },
+    habitable: {
+        type: Sequelize.STRING,
+        allowNull: false,
     }
-});
+}, {timestamps: false, underscored: true});//tempo de criação e update
 
-module.exports = mongoose.model('Planet', schema);
+Planet.hasMany(Travel, {
+    foreignKey: 'name_planet',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
+
+module.exports = Planet;

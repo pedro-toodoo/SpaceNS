@@ -1,10 +1,9 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Planet = mongoose.model('Planet');
+const Planet = require('../models/planet');
 
 exports.get = async() => {
-    const res = await Planet.find({}).populate('star');
+    const res = await Planet.findAll();
     return res;
 }
 

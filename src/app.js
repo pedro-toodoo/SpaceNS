@@ -2,20 +2,21 @@
 
 const express = require('express');
 const bodyParser = require('body-parser'); //converte para JSON
-const mongoose = require('mongoose');
+const configsqlite = require('./configsqlite');
 const config = require('./config');
+
+configsqlite.sync();
 
 const app = express();
 const router = express.Router();
 
-//conecta com o BD
-mongoose.connect(config.connectionString);
 
 //carrega models
 const Passenger = require('./models/passenger');
 const Crew = require('./models/crew');
 const Planet = require('./models/planet');
 const Star = require('./models/star');
+const Travel = require('./models/travel');
 
 //carrega rotas
 const indexRoute = require('./routes/index');
@@ -23,6 +24,7 @@ const passengerRoute = require('./routes/passenger-routes');
 const crewRoute = require('./routes/crew-routes');
 const planetRoute = require('./routes/planet-routes');
 const starRoute = require('./routes/star-routes');
+const travelRoute = require('./routes/travel-routes');
 
 app.use(bodyParser.json({
     limit: '5mb'
@@ -42,5 +44,6 @@ app.use('/passengers', passengerRoute);
 app.use('/crew', crewRoute);
 app.use('/planets', planetRoute);
 app.use('/stars', starRoute);
+app.use('/travels', travelRoute);
 
 module.exports = app;

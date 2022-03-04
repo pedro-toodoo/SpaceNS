@@ -2,36 +2,30 @@
 
 const Sequelize = require('sequelize');
 const database = require('../configsqlite');
-const Planet = require('./planet')
 
-const Star = database.define('star', {
-    name: {
-        type: Sequelize.STRING,
-        allowNull: false, 
+const Travel = database.define('travel', {
+    id: {
+        type: Sequelize.INTEGER,
+        AutoIncrement: true, 
+        allowNull: false,
         primaryKey: true
     },
-    mass: {
-        type: Sequelize.DECIMAL,
-        allowNull: false, 
-    },
-    size: {
-        type: Sequelize.DECIMAL,
-        allowNull: false, 
-    },
-    galaxy: {
+    name_planet: {
         type: Sequelize.STRING,
         allowNull: false, 
     },
-    luminosity: {
+    duration: {
         type: Sequelize.DECIMAL,
         allowNull: false, 
     },
+    distance: {
+        type: Sequelize.DECIMAL,
+        allowNull: false, 
+    },
+    spacecraft: {
+        type: Sequelize.STRING,
+        allowNull: false, 
+    }
 }, {timestamps: false, underscored: true});//tempo de criação e update
 
-Star.hasMany(Planet, {
-    foreignKey: 'star',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE'
-})
-
-module.exports = Star;
+module.exports = Travel;

@@ -1,50 +1,40 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Sequelize = require('sequelize');
+const database = require('../configsqlite');
 
-const schema = new Schema({
+
+const Passenger = database.define('passenger', {
     name: {
-        type: String,
-        required: true,
-        trim: true //remove espaços antes e depois da string 
+        type: Sequelize.STRING,
+        allowNull: false, 
     },
     birth_date: {
-        type: String,
-        required: true,
-        trim: true //remove espaços antes e depois da string
+        type: Sequelize.STRING,
+        allowNull: false, 
     },
     sex: {
-        type: String,
-        required: true,
-        trim: true //remove espaços antes e depois da string 
+        type: Sequelize.STRING,
+        allowNull: false, 
     },
     profession: {
-        type: String,
-        required: true,
-        trim: true //remove espaços antes e depois da string 
+        type: Sequelize.STRING,
+        allowNull: true, 
     },
     email: {
-        type: String,
-        required: true,
-        trim: true //remove espaços antes e depois da string 
+        type: Sequelize.STRING,
+        allowNull: false, 
+        primaryKey: true
     },
     password: {
-        type: String,
-        required: true,
-        trim: true //remove espaços antes e depois da string 
+        type: Sequelize.STRING,
+        allowNull: false, 
     },
     spacecraft: {
-        type: String,
-        required: true,
-        trim: true //remove espaços antes e depois da string 
-    },
-    roles: [{
-        type: String,
-        required: true,
-        enum: ['user', 'admin'],
-        default: 'user'
-    }]
-});
+        type: Sequelize.STRING,
+        allowNull: false, 
+    }
+}, {timestamps: false, underscored: true});//tempo de criação e update
 
-module.exports = mongoose.model('Passenger', schema);
+
+module.exports = Passenger;

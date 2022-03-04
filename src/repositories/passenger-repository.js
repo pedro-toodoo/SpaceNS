@@ -1,7 +1,6 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Passenger = mongoose.model('Passenger');
+const Passenger = require('../models/passenger');
 
 exports.create = async (data) => {
     var passenger = new Passenger(data);

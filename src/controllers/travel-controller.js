@@ -1,12 +1,10 @@
 'use strict';
 
-const repository = require('../repositories/star-repository');
+const repository = require('../repositories/travel-repository');
 const md5 = require('md5');
 const config = require('../config');
 const ValidationContract = require('../validators/fluent-validator');
-
-
-//const authService = require('../services/auth-services');
+const authService = require('../services/authentication-service');
 
 exports.get = async (req, res, next) => {
     var data = await repository.get();
@@ -15,8 +13,8 @@ exports.get = async (req, res, next) => {
 
 exports.post = async (req, res, next) => {
     let contract = new ValidationContract();
-    contract.hasMinLen(req.body.name, 3, 'O nome deve ter no mínimo 3 caracteres');
-    contract.hasMinLen(req.body.galaxy, 3, 'O nome da galáxia deve ter no mínimo 3 caracteres');
+    contract.hasMinLen(req.body.name_planet, 3, 'O nome do planeta deve ter no mínimo 3 caracteres');
+    contract.hasMinLen(req.body.spacecraft, 3, 'O nome da nave deve ter no mínimo 3 caracteres');
     
     //se for inválido: 
     if (!contract.isValid()) {
@@ -25,15 +23,14 @@ exports.post = async (req, res, next) => {
     }
     try {
         await repository.create({
-            name: req.body.name,
-            mass: req.body.mass,
-            size: req.body.size,
-            galaxy: req.body.galaxy,
-            luminosity: req.body.luminosity,
+            name_planet: req.body.name_planet,
+            duration: req.body.duration,
+            distance: req.body.distance,
+            spacecraft: req.body.spacecraft,
         });
 
         res.status(201).send({
-            message: 'Estrela cadastrado com sucesso'
+            message: 'Viagem cadastrada com sucesso'
         });
     } catch (e) {
         console.log(e)

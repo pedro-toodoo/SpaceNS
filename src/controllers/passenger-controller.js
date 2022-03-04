@@ -26,14 +26,14 @@ exports.post = async (req, res, next) => {
             profession: req.body.profession,
             email: req.body.email,
             password: md5(req.body.password + global.SALT_KEY),
-            spacecraft: req.body.spacecraft,
-            roles: ["user"]
+            spacecraft: req.body.spacecraft
         });
 
         res.status(201).send({
             message: 'Passageiro cadastrado com sucesso'
         });
     } catch (e) {
+        console.log(e)
         res.status(500).send({
             message: 'Falha ao processar requisição'
         });
