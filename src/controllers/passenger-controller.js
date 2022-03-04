@@ -6,6 +6,11 @@ const config = require('../config');
 const ValidationContract = require('../validators/fluent-validator');
 const authService = require('../services/authentication-service');
 
+exports.get = async (req, res, next) => {
+    var data = await repository.get();
+    res.status(200).send(data);
+}
+
 exports.post = async (req, res, next) => {
     let contract = new ValidationContract();
     contract.hasMinLen(req.body.name, 3, 'O nome deve ter no mínimo 3 caracteres');

@@ -14,3 +14,8 @@ exports.authenticate = async (data) => {
     });
     return res; 
 }
+
+exports.get = async() => {
+    const res = await Crew.findAll();
+    return res;
+}

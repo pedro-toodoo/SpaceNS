@@ -28,7 +28,8 @@ exports.post = async (req, res, next) => {
             name: req.body.name,
             mass: req.body.mass,
             size: req.body.size,
-            star: req.body.star
+            star: req.body.star,
+            habitable: req.body.habitable
         });
 
         res.status(201).send({
