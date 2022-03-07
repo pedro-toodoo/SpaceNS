@@ -68,7 +68,11 @@ exports.authenticate = async (req, res, next) => {
             token: token,
             data: {
                 email: passenger.email,
-                name: passenger.name
+                name: passenger.name,
+                birthDate: passenger.birthDate,
+                profission: passenger.profession,
+                sex: passenger.sex,
+                email: passenger.email,
             }
         });
     } catch (e) {

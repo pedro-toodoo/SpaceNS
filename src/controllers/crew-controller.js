@@ -67,8 +67,12 @@ exports.authenticate = async (req, res, next) => {
         res.status(201).send({
             token: token,
             data: {
+                name: crew.name,
+                birthDate: crew.birthDate,
+                sex: crew.sex,
+                specialization: crew.specialization,
                 email: crew.email,
-                name: crew.name
+                emailSupervisor: crew.emailSupervisor
             }
         });
     } catch (e) {
