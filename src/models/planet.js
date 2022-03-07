@@ -26,12 +26,12 @@ const Planet = database.define('planet', {
         type: Sequelize.STRING,
         allowNull: false,
     }
-}, {timestamps: false, underscored: true});//tempo de criação e update
+}, {timestamps: false}); //tempo de criação e update
 
 Planet.hasMany(Travel, {
-    foreignKey: 'name_planet',
+    foreignKey: 'namePlanet',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
-})
+});
 
 module.exports = Planet;

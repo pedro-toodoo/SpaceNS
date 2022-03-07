@@ -3,13 +3,12 @@
 const Sequelize = require('sequelize');
 const database = require('../configsqlite');
 
-
 const Passenger = database.define('passenger', {
     name: {
         type: Sequelize.STRING,
         allowNull: false, 
     },
-    birth_date: {
+    birthDate: {
         type: Sequelize.STRING,
         allowNull: false, 
     },
@@ -30,11 +29,10 @@ const Passenger = database.define('passenger', {
         type: Sequelize.STRING,
         allowNull: false, 
     },
-    spacecraft: {
+    nameSpacecraft: {
         type: Sequelize.STRING,
         allowNull: false, 
     }
-}, {timestamps: false, underscored: true});//tempo de criação e update
-
+}, {timestamps: false});//tempo de criação e update
 
 module.exports = Passenger;

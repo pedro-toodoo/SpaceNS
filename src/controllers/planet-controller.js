@@ -5,9 +5,6 @@ const md5 = require('md5');
 const config = require('../config');
 const ValidationContract = require('../validators/fluent-validator');
 
-
-//const authService = require('../services/auth-services');
-
 exports.get = async (req, res, next) => {
     var data = await repository.get();
     res.status(200).send(data);
@@ -36,7 +33,6 @@ exports.post = async (req, res, next) => {
             message: 'Planeta cadastrado com sucesso'
         });
     } catch (e) {
-        console.log(e)
         res.status(500).send({
             message: 'Falha ao processar requisição'
         });

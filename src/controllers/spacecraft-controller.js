@@ -1,9 +1,8 @@
 'use strict';
 
-const repository = require('../repositories/travel-repository');
+const repository = require('../repositories/spacecraft-repository');
 const md5 = require('md5');
 const ValidationContract = require('../validators/fluent-validator');
-const authService = require('../services/authentication-service');
 
 exports.get = async (req, res, next) => {
     var data = await repository.get();
@@ -12,8 +11,7 @@ exports.get = async (req, res, next) => {
 
 exports.post = async (req, res, next) => {
     let contract = new ValidationContract();
-    contract.hasMinLen(req.body.namePlanet, 3, 'O nome do planeta deve ter no mínimo 3 caracteres');
-    contract.hasMinLen(req.body.nameSpacecraft, 3, 'O nome da nave deve ter no mínimo 3 caracteres');
+    contract.hasMinLen(req.body.name, 3, 'O nome deve ter no mínimo 3 caracteres');
     
     //se for inválido: 
     if (!contract.isValid()) {
@@ -22,17 +20,16 @@ exports.post = async (req, res, next) => {
     }
     try {
         await repository.create({
-            namePlanet: req.body.namePlanet,
-            duration: req.body.duration,
-            distance: req.body.distance,
-            nameSpacecraft: req.body.nameSpacecraft
+            name: req.body.name,
+            numCrew: req.body.numCrew,
+            numPassengers: req.body.numPassengers
         });
 
         res.status(201).send({
-            message: 'Viagem cadastrada com sucesso'
+            message: 'Nave espacial cadastrada com sucesso'
         });
     } catch (e) {
-        console.log(e)
+        console.log(e);
         res.status(500).send({
             message: 'Falha ao processar requisição'
         });

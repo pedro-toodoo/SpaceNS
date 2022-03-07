@@ -3,13 +3,12 @@
 const Sequelize = require('sequelize');
 const database = require('../configsqlite');
 
-
 const Crew = database.define('crew', {
     name: {
         type: Sequelize.STRING,
         allowNull: false, 
     },
-    birth_date: {
+    birthDate: {
         type: Sequelize.STRING,
         allowNull: false, 
     },
@@ -23,23 +22,27 @@ const Crew = database.define('crew', {
     },
     email: {
         type: Sequelize.STRING,
-        allowNull: false, 
-        primaryKey: true
+        allowNull: true, 
+        primaryKey: false
     },
     password: {
         type: Sequelize.STRING,
         allowNull: false, 
     },
-    spacecraft: {
+    nameSpacecraft: {
         type: Sequelize.STRING,
         allowNull: false, 
     },
-    email_supervisor: {
+    emailSupervisor: {
         type: Sequelize.STRING,
         allowNull: false, 
     }
+}, {timestamps: false});//tempo de criação e update
 
-}, {timestamps: false, underscored: true});//tempo de criação e update
-
+Crew.hasMany(Crew, {
+    foreignKey: 'emailSupervisor',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
 
 module.exports = Crew;

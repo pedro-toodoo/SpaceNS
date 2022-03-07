@@ -16,7 +16,7 @@ exports.post = async (req, res, next) => {
     contract.hasMinLen(req.body.name, 3, 'O nome deve ter no mínimo 3 caracteres');
     contract.isEmail(req.body.email, 'Email inválido');
     contract.hasMinLen(req.body.password, 8, 'A senha deve ter no mínimo 8 caracteres');
-    contract.hasMinLen(req.body.spacecraft, 3, 'O nome da nave deve ter no mínimo 3 caracteres');
+    contract.hasMinLen(req.body.nameSpacecraft, 3, 'O nome da nave deve ter no mínimo 3 caracteres');
     
     //se for inválido: 
     if (!contract.isValid()) {
@@ -26,12 +26,12 @@ exports.post = async (req, res, next) => {
     try {
         await repository.create({
             name: req.body.name,
-            birth_date: req.body.birth_date,
+            birthDate: req.body.birthDate,
             sex: req.body.sex,
             profession: req.body.profession,
             email: req.body.email,
             password: md5(req.body.password + global.SALT_KEY),
-            spacecraft: req.body.spacecraft
+            nameSpacecraft: req.body.nameSpacecraft
         });
 
         res.status(201).send({
@@ -58,7 +58,7 @@ exports.authenticate = async (req, res, next) => {
             });
             return;
         }
-
+        
         const token = await authService.generateToken({
             email: passenger.email,
             name: passenger.name,

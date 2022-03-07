@@ -26,12 +26,12 @@ const Star = database.define('star', {
         type: Sequelize.DECIMAL,
         allowNull: false, 
     },
-}, {timestamps: false, underscored: true});//tempo de criação e update
+}, {timestamps: false});//tempo de criação e update
 
 Star.hasMany(Planet, {
     foreignKey: 'star',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
-})
+});
 
 module.exports = Star;

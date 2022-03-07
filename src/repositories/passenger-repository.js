@@ -8,7 +8,7 @@ exports.create = async (data) => {
 }
 
 exports.authenticate = async (data) => {
-    const res = await Passenger.find({
+    const res = await Passenger.findOne({
         email: data.email,
         password: data.password
     });

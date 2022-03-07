@@ -1,6 +1,6 @@
 'use strict';
 
-const repository = require('../repositories/travel-repository');
+const repository = require('../repositories/map-repository');
 const md5 = require('md5');
 const ValidationContract = require('../validators/fluent-validator');
 const authService = require('../services/authentication-service');
@@ -12,9 +12,8 @@ exports.get = async (req, res, next) => {
 
 exports.post = async (req, res, next) => {
     let contract = new ValidationContract();
-    contract.hasMinLen(req.body.namePlanet, 3, 'O nome do planeta deve ter no mínimo 3 caracteres');
-    contract.hasMinLen(req.body.nameSpacecraft, 3, 'O nome da nave deve ter no mínimo 3 caracteres');
-    
+    contract.hasMinLen(req.body.orientation, 3, 'Orientação deve ter no mínimo 3 caracteres');
+        
     //se for inválido: 
     if (!contract.isValid()) {
         res.status(400).send(contract.errors()).end();
@@ -22,17 +21,16 @@ exports.post = async (req, res, next) => {
     }
     try {
         await repository.create({
-            namePlanet: req.body.namePlanet,
-            duration: req.body.duration,
-            distance: req.body.distance,
-            nameSpacecraft: req.body.nameSpacecraft
+            title: req.body.title,
+            scale: req.body.scale,
+            orientation: req.body.orientation,
+            idTravel: req.body.idTravel
         });
 
         res.status(201).send({
-            message: 'Viagem cadastrada com sucesso'
+            message: 'Mapa cadastrada com sucesso'
         });
     } catch (e) {
-        console.log(e)
         res.status(500).send({
             message: 'Falha ao processar requisição'
         });

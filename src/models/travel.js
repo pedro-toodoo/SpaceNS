@@ -2,17 +2,13 @@
 
 const Sequelize = require('sequelize');
 const database = require('../configsqlite');
+const Map = require('./map');
 
 const Travel = database.define('travel', {
     id: {
         type: Sequelize.INTEGER,
-        AutoIncrement: true, 
-        allowNull: false,
+        autoIncrement: true,
         primaryKey: true
-    },
-    name_planet: {
-        type: Sequelize.STRING,
-        allowNull: false, 
     },
     duration: {
         type: Sequelize.DECIMAL,
@@ -22,10 +18,20 @@ const Travel = database.define('travel', {
         type: Sequelize.DECIMAL,
         allowNull: false, 
     },
-    spacecraft: {
+    namePlanet: {
         type: Sequelize.STRING,
         allowNull: false, 
-    }
-}, {timestamps: false, underscored: true});//tempo de criação e update
+    },
+    nameSpacecraft: {
+        type: Sequelize.STRING,
+        allowNull: false, 
+    },
+}, {timestamps: false});//tempo de criação e update
+
+Travel.hasOne(Map, {
+    foreignKey: 'idTravel',    
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
 
 module.exports = Travel;

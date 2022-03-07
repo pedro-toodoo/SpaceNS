@@ -8,7 +8,7 @@ exports.get = async() => {
 }
 
 exports.create = async (data) => {
-    var travel = new Star(data);
+    var travel = new Travel(data);
     await travel.save()
 }
 

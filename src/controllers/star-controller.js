@@ -5,9 +5,6 @@ const md5 = require('md5');
 const config = require('../config');
 const ValidationContract = require('../validators/fluent-validator');
 
-
-//const authService = require('../services/auth-services');
-
 exports.get = async (req, res, next) => {
     var data = await repository.get();
     res.status(200).send(data);
@@ -33,7 +30,7 @@ exports.post = async (req, res, next) => {
         });
 
         res.status(201).send({
-            message: 'Estrela cadastrado com sucesso'
+            message: 'Estrela cadastrada com sucesso'
         });
     } catch (e) {
         console.log(e)
