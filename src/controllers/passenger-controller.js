@@ -73,6 +73,7 @@ exports.authenticate = async (req, res, next) => {
                 profission: passenger.profession,
                 sex: passenger.sex,
                 email: passenger.email,
+                nameSpacecraft: passenger.nameSpacecraft
             }
         });
     } catch (e) {
