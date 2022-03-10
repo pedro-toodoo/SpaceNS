@@ -2,9 +2,8 @@
 
 const repository = require('../repositories/passenger-repository');
 const md5 = require('md5');
-const config = require('../config');
 const ValidationContract = require('../validators/fluent-validator');
-const authService = require('../services/authentication-service');
+const authService = require('../services/auth-services');
 
 exports.get = async (req, res, next) => {
     var data = await repository.get();
@@ -51,6 +50,8 @@ exports.authenticate = async (req, res, next) => {
             email: req.body.email,
             password: md5(req.body.password + global.SALT_KEY)
         });
+        
+        console.log(req.body);
 
         if (!passenger) {
             res.status(404).send({
@@ -58,25 +59,25 @@ exports.authenticate = async (req, res, next) => {
             });
             return;
         }
-        
+
         const token = await authService.generateToken({
             email: passenger.email,
-            name: passenger.name,
-        })
-
+            name: passenger.name
+        });
+        
         res.status(201).send({
             token: token,
             data: {
-                email: passenger.email,
                 name: passenger.name,
                 birthDate: passenger.birthDate,
-                profission: passenger.profession,
                 sex: passenger.sex,
+                profession: passenger.profession,
                 email: passenger.email,
-                nameSpacecraft: passenger.nameSpacecraft
+                spacecraft: passenger.spacecraft
             }
         });
     } catch (e) {
+        console.log(e);
         res.status(500).send({
             message: 'Falha ao processar requisição'
         });

@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/passenger-controller');
-const authService = require('../services/authentication-service');
+const authService = require('../services/auth-services');
 
 router.post('/', controller.post); 
 router.post('/login', controller.authenticate);

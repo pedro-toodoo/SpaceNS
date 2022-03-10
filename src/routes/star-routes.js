@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/star-controller');
-const authService = require('../services/authentication-service');
+const authService = require('../services/auth-services');
 
 router.post('/', authService.authorize, controller.post); 
 router.get('/', authService.authorize, controller.get);

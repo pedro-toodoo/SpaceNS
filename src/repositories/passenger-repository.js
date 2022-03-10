@@ -7,12 +7,13 @@ exports.create = async (data) => {
     await passenger.save()
 }
 
-exports.authenticate = async (data) => {
+exports.authenticate = async(data) => {
+    console.log(data);
     const res = await Passenger.findOne({
         email: data.email,
         password: data.password
     });
-    return res; 
+    return res;
 }
 
 exports.get = async() => {

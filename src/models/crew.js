@@ -22,8 +22,8 @@ const Crew = database.define('crew', {
     },
     email: {
         type: Sequelize.STRING,
-        allowNull: true, 
-        primaryKey: false
+        allowNull: false, 
+        primaryKey: true
     },
     password: {
         type: Sequelize.STRING,
@@ -35,11 +35,11 @@ const Crew = database.define('crew', {
     },
     emailSupervisor: {
         type: Sequelize.STRING,
-        allowNull: false, 
+        allowNull: true, 
     }
 }, {timestamps: false});//tempo de criação e update
 
-Crew.hasMany(Crew, {
+Crew.hasOne(Crew, {
     foreignKey: 'emailSupervisor',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'

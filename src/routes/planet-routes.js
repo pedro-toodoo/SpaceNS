@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/planet-controller');
-const authService = require('../services/authentication-service');
+const authService = require('../services/auth-services');
 
 router.get('/', authService.authorize,controller.get);
 router.post('/', authService.authorize, controller.post); 

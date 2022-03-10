@@ -19,7 +19,7 @@ const Map = database.define('map', {
     },
     obstacles: {
         type: Sequelize.DECIMAL,
-        allowNull: true
+        allowNull: false
     },
     idTravel: {
         type: Sequelize.INTEGER,
