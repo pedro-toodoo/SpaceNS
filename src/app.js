@@ -9,7 +9,6 @@ configsqlite.sync();
 const app = express();
 
 //carrega models
-const Customer = require('./models/customer');
 const Passenger = require('./models/passenger');
 const Crew = require('./models/crew');
 const Planet = require('./models/planet');
@@ -27,7 +26,6 @@ const starRoute = require('./routes/star-routes');
 const travelRoute = require('./routes/travel-routes');
 const mapRoute = require('./routes/map-routes');
 const spacecraftRoute = require('./routes/spacecraft-routes');
-const customerRoute = require('./routes/customer-routes');
 const apiRoute = require('./api/consume');
 
 app.use(bodyParser.json({
@@ -51,7 +49,6 @@ app.use('/stars', starRoute);
 app.use('/travels', travelRoute);
 app.use('/maps', mapRoute);
 app.use('/spacecrafts', spacecraftRoute);
-app.use('/customers', customerRoute);
 app.use('/api', apiRoute);
 
 module.exports = app;

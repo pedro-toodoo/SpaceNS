@@ -61,7 +61,8 @@ exports.authenticate = async (req, res, next) => {
 
         const token = await authService.generateToken({
             email: crew.email,
-            name: crew.name
+            name: crew.name,
+            nameSpacecraft: crew.nameSpacecraft
         })
 
         res.status(201).send({
@@ -72,7 +73,8 @@ exports.authenticate = async (req, res, next) => {
                 sex: crew.sex,
                 specialization: crew.specialization,
                 email: crew.email,
-                emailSupervisor: crew.emailSupervisor
+                emailSupervisor: crew.emailSupervisor,
+                nameSpacecraft: crew.nameSpacecraft
             }
         });
     } catch (e) {

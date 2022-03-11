@@ -23,6 +23,7 @@ exports.post = async (req, res, next) => {
             title: req.body.title,
             scale: req.body.scale,
             orientation: req.body.orientation,
+            obstacles: req.body.obstacles,
             idTravel: req.body.idTravel
         });
 

@@ -34,10 +34,4 @@ Spacecraft.hasOne(Passenger, {
     onUpdate: 'CASCADE'
 });
 
-Spacecraft.hasMany(Travel, {
-    foreignKey: 'nameSpacecraft',
-    onDelete:  'CASCADE',
-    onUpdate: 'CASCADE'
-})
-
 module.exports = Spacecraft;

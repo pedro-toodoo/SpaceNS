@@ -50,9 +50,7 @@ exports.authenticate = async (req, res, next) => {
             email: req.body.email,
             password: md5(req.body.password + global.SALT_KEY)
         });
-        
-        console.log(req.body);
-
+    
         if (!passenger) {
             res.status(404).send({
                 message: 'Usuário ou senha inválida'
@@ -62,7 +60,8 @@ exports.authenticate = async (req, res, next) => {
 
         const token = await authService.generateToken({
             email: passenger.email,
-            name: passenger.name
+            name: passenger.name,            
+            nameSpacecraft: passenger.nameSpacecraft
         });
         
         res.status(201).send({
@@ -73,11 +72,10 @@ exports.authenticate = async (req, res, next) => {
                 sex: passenger.sex,
                 profession: passenger.profession,
                 email: passenger.email,
-                spacecraft: passenger.spacecraft
+                nameSpacecraft: passenger.nameSpacecraft
             }
         });
     } catch (e) {
-        console.log(e);
         res.status(500).send({
             message: 'Falha ao processar requisição'
         });
