@@ -31,7 +31,7 @@ usando o banco de dados SQLite para orientar as naves nessa missão.
 <h4> Além disso, foi feito o consumo da <a href="https://docs.spacexdata.com/">SpaceX API</a> </h4>
 <h4> Endpoints criados: </h4>
 
-- /crew (get/post)
+- /crew (get/post) 
 - /passengers (get/post)
 - /planets (get/post)
 - /stars (get/post)
@@ -39,7 +39,9 @@ usando o banco de dados SQLite para orientar as naves nessa missão.
 - /maps (get/post)
 - /api/rockets (get)
 
-<h3> Para a criação das Spacecrafts e os usuários (tripulantes e passageiros) não há autenticação. Porém, só é possível fazer GET e PUSH nas outras tabelas se estiver autenticado no sistema através de um email e senha válidos já cadastrados, dessa forma será gerado um TOKEN (que possui validade de 1 dia) que será passado ao fazer as requisições. </h3>
+ <h4>(Endpoints de /crew e /passengers possuem /login para fazer autenticação de usuários)</h4>
+
+<h3> Para a criação das Spacecrafts e os usuários (tripulantes e passageiros) não há autenticação. Porém, só é possível fazer GET e POST nas outras tabelas se estiver autenticado no sistema através de um email e senha válidos já cadastrados, dessa forma será gerado um TOKEN (que possui validade de 1 dia) que será passado ao fazer as requisições. </h3>
 
 
 # Passo a passo da implementação 🏃
