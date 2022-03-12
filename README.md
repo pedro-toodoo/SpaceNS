@@ -110,11 +110,11 @@ npm i sequelize --save
 ```
 npm install body-parser --save
 ```
-- 9º: instalar o body-parser:
+- 10º: instalar o JEST:
 ```
 npm install --save-dev jest
 ```
-- 9º: instalar o body-parser:
+- 9º: instalar o supertest:
 ```
 npm install supertest --save-dev
 ```
