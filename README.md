@@ -1,4 +1,4 @@
-<h1 align="center"> Pokedex API - Python </h1>
+<h1 align="center"> Space NS API - Node JS </h1>
 
 <h4 align="center">   
 A NASA (National Aeronautics and Space Administration), planeja realizar
@@ -11,6 +11,7 @@ usando o banco de dados SQLite para orientar as naves nessa missão.
 - [Colaboradores](#colaboradores) 
 - [Informações da API](#informações-da-api-)
 - [Passo a passo da implementação](#passo-a-passo-da-implementação-)
+- [Testes de unidade JEST](#testes-de-unidade-jest)
 - [Instalações](#instalações-)
 
 # Colaboradores
@@ -64,7 +65,10 @@ usando o banco de dados SQLite para orientar as naves nessa missão.
 - ### Fazer deploy em domínio gratuito
     <h5>Foi feito a sincronização deste repositório do git com um app criado no <a href="https://dashboard.heroku.com/apps">HEROKU</a>, dessa forma tudo "commitado" aqui será feito o deploy automaticamente.</h5>
         
-- ### Implementar Node 
+# Testes de unidade JEST
+<h3> Foi realizado alguns testes para verificar endpoints das tabelas do banco de dados. O arquivo utilizado foi index.spec.js. </h3>
+
+![image](https://user-images.githubusercontent.com/94690905/158018641-17f18442-4767-444a-8a23-1473f10f8a03.png)
 
 # Instalações 🔧
 
@@ -103,5 +107,13 @@ npm i sequelize --save
 - 9º: instalar o body-parser:
 ```
 npm install body-parser --save
+```
+- 9º: instalar o body-parser:
+```
+npm install --save-dev jest
+```
+- 9º: instalar o body-parser:
+```
+npm install supertest --save-dev
 ```
 
