@@ -73,6 +73,7 @@ usando o banco de dados SQLite para orientar as naves nessa missão.
 ![image](https://user-images.githubusercontent.com/94690905/158018641-17f18442-4767-444a-8a23-1473f10f8a03.png)
 
 # Instalações 🔧
+<h3>Pode fazer as instalações individuais ou se preferir faz apenas um "npm install" que instalará automaticamente todas as dependências ques estão no arquivo package.json</h3>
 
 - 1º: instalar o Node:
 ```
